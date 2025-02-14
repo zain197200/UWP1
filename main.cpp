@@ -9,6 +9,7 @@ BufferedSerial pc(USBTX, USBRX, 9600);
 // main() runs in its own thread in the OS
 int main()
 {
+    while(1)
    {
        length = snprintf(buffer, BUFF_LENGTH, "\r\n Hello");
        pc.write(buffer, length);
