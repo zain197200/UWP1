@@ -9,10 +9,13 @@ BufferedSerial pc(USBTX, USBRX, 9600);
 // main() runs in its own thread in the OS
 int main()
 {
-    while(1)
+
+   while (1)  
    {
-       length = snprintf(buffer, BUFF_LENGTH, "\r\n Hello");
+       length = snprintf(buffer, BUFF_LENGTH, "\r\n{Status:{A:2}}");
        pc.write(buffer, length);
        ThisThread::sleep_for(chrono::seconds(1));
+       
+
    }
 }
