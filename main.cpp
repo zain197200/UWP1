@@ -7,7 +7,7 @@
 #define BLINKING_RATE 10ms
 int length;
 char buffer[BUFF_LENGTH] = {0};
-UnbufferedSerial pc(USBTX, USBRX, 9600);
+UnbufferedSerial pc(D8,D2, 9600);
 char buf[32] = {0};
 char MSG[32];
 DigitalOut led(LED1);
