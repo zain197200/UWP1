@@ -20,15 +20,17 @@ int main()
     while(true) {
         led = !led;
         if (uint32_t num = pc.read(buf, sizeof(buf))) {
-        // String compare buf with the character 1. Equals 0 if match.
-        if(strcmp(buf, "1") == 0)
+            if(strcmp(buf, "1") == 0)
         {
             led = !led;
             length = snprintf(MSG,MSG_BUFF_LENGTH,"Received Command LED1\r\n");
             pc.write(MSG,length);
+        } else if (strcmp(buf, "s") == 0) {
+            length = snprintf(MSG,MSG_BUFF_LENGTH,"{status:{LED1:%d}}\r\n",led1.read());
+            pc.write(MSG,length);   
         }
         }
-        ThisThread::sleep_for(BLINKING_RATE);
 
+        ThisThread::sleep_for(BLINKING_RATE);
     }
 }
